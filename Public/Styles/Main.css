@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
     color: #e0e6ed;
     line-height: 1.6;
 }
@@ -18,23 +19,54 @@ body {
     justify-content: center;
     text-align: center;
     position: relative;
-    background: #90d5ff;
+
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+}
 
 
 .hero-content {
     position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
     max-width: 1000px;
     width: 100%;
 }
 
+
+
+
+.hero-left {
+    text-align: left;
+}
+
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
 .greeting {
     font-size: 1.2rem;
-    color: black;
+    color: #64ffda;
     margin-bottom: 10px;
+
 
 }
 
@@ -42,31 +74,87 @@ body {
     font-size: 4rem;
     font-weight: bold;
     margin-bottom: 20px;
-    color: black;
+    background: linear-gradient(45deg, #64ffda, #ff6b9d, #ffd93d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 
 }
 
 .title {
     font-size: 1.5rem;
-    color: black;
+    color: #8892b0;
     margin-bottom: 30px;
-
-
-
 }
 
 .hero-about-preview {
-    background: #112240cc;
+    background: rgba(17, 34, 64, 0.8);
+    border: 1px solid #233554;
     border-radius: 10px;
     padding: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     text-align: left;
-
 }
+
 
 .hero-about-preview h3 {
     color: #64ffda;
     margin-bottom: 15px;
     font-size: 1.2rem;
+}
+
+.hero-preview-line {
+    margin: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    color: #8892b0;
+    font-size: 0.9rem;
+}
+
+.hero-preview-line::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #64ffda;
+}
+
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 3px solid #64ffda;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+}
+
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: #64ffda;
+    margin: 0 auto 10px;
+    animation: bounce 2s infinite;
+}
+
+.scroll-text {
+    color: #64ffda;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 
