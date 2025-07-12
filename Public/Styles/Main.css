@@ -379,3 +379,112 @@ body {
     left: 0;
     color: #64ffda;
 }
+
+/* Infinite scroll slider*/
+.infinite-scroll-slider {
+    margin-top: 50px;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1.7s forwards;
+}
+
+.scroller {
+    max-width: 100%;
+}
+
+.scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg,
+            transparent,
+            white 20%,
+            white 80%,
+            transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 25s) var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+    --_animation-duration: 15s;
+}
+
+.scroller[data-speed="slow"] {
+    --_animation-duration: 35s;
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 1rem));
+    }
+}
+
+.tech-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    color: #8892b0;
+    transition: all 0.3s ease;
+    background: rgba(17, 34, 64, 0.6);
+    border: 1px solid #233554;
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.tech-icon:hover {
+    color: #64ffda;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+}
+
+.tech-icon-img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 12px;
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+}
+
+.tech-icon:hover .tech-icon-img {
+    filter: grayscale(0);
+}
+
+.tech-icon-name {
+    font-size: 0.9rem;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
