@@ -17,13 +17,16 @@ document.querySelectorAll('.fade-in').forEach(el => {
 });
 
 // scroll indicator functionality
-document.querySelector('.scroll-indicator').addEventListener('click', () => {
-  document.querySelector('.about').scrollIntoView({
-    behavior: 'smooth'
+const scrollIndicator = document.querySelector('.scroll-indicator');
+if (scrollIndicator) {
+  scrollIndicator.addEventListener('click', () => {
+    document.querySelector('.about').scrollIntoView({
+      behavior: 'smooth'
+    });
   });
-});
+}
 
-
+// Infinite scroll for technologies section
 const scrollers = document.querySelectorAll(".scroller");
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -32,13 +35,10 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
 function addAnimation() {
   scrollers.forEach((scroller) => {
-
     scroller.setAttribute("data-animated", true);
-
 
     const scrollerInner = scroller.querySelector(".scroller__inner");
     const scrollerContent = Array.from(scrollerInner.children);
-
 
     scrollerContent.forEach((item) => {
       const duplicatedItem = item.cloneNode(true);
@@ -77,3 +77,53 @@ function createParticle() {
 
 //interval of particles
 setInterval(createParticle, 200);
+
+// Projects page 
+document.addEventListener('DOMContentLoaded', function () {
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if (filterBtns.length > 0 && projectCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+     
+        filterBtns.forEach(b => b.classList.remove('active'));
+        
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 100);
+          } else {
+            const categories = card.getAttribute('data-category').split(' ');
+            if (categories.includes(filter)) {
+              card.style.display = 'block';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 100);
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                card.style.display = 'none';
+              }, 300);
+            }
+          }
+        });
+      });
+    });
+
+
+    projectCards.forEach(card => {
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    });
+  }
+});
