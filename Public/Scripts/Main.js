@@ -78,52 +78,157 @@ function createParticle() {
 //interval of particles
 setInterval(createParticle, 200);
 
-// Projects page 
-document.addEventListener('DOMContentLoaded', function () {
+// Projects page functionality    
+class ProjectManager {
+  constructor() {
+    this.projects = [];
+    this.currentFilter = 'all';
+  }
 
+  async loadProjects() {
+    try {
+      const response = await fetch('./Data/projects.json');
+      if (!response.ok) {
+        throw new Error('Failed to load projects');
+      }
+      const data = await response.json();
+      this.projects = data.projects;
+      return this.projects;
+    } catch (error) {
+      console.error('Error loading projects:', error);
+      return [];
+    }
+  }
+
+  filterProjects(category) {
+    if (category === 'all') {
+      return this.projects;
+    }
+    return this.projects.filter(project => 
+      project.category.includes(category)
+    );
+  }
+
+  createProjectCard(project) {
+    const statusClass = `status-${project.status.replace(' ', '')}`;
+    const categoryString = project.category.join(' ');
+    
+    // links
+    let linksHtml = '<div class="project-links">';
+    if (project.links.live) {
+      linksHtml += `<a href="${project.links.live}" class="project-link">🔗 Live Site</a>`;
+    }
+    if (project.links.demo) {
+      linksHtml += `<a href="${project.links.demo}" class="project-link">🔗 Demo</a>`;
+    }
+    if (project.links.github) {
+      linksHtml += `<a href="${project.links.github}" class="project-link">💻 GitHub</a>`;
+    }
+    linksHtml += '</div>';
+  
+    //Tech tags
+    const techTags = project.technologies.map(tech => 
+      `<span class="tech-tag">${tech}</span>`
+    ).join('');
+
+    return `
+      <div class="project-card" data-category="${categoryString}">
+        <div class="project-status ${statusClass}">${project.status}</div>
+        <div class="project-image">
+          <img src="${project.image}" alt="${project.title} Screenshot" loading="lazy">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">${project.title}</h3>
+          <p class="project-description">${project.description}</p>
+          <div class="project-tech">${techTags}</div>
+          ${linksHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  renderProjects(container, projects = null) {
+    const projectsToRender = projects || this.projects;
+    const projectsHtml = projectsToRender
+      .map(project => this.createProjectCard(project))
+      .join('');
+    
+    container.innerHTML = projectsHtml;
+    
+    // fade in
+    const newCards = container.querySelectorAll('.project-card');
+    newCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 100);
+    });
+  }
+
+  // featured projects
+  getFeaturedProjects(limit = 3) {
+    return this.projects
+      .filter(project => project.featured)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, limit);
+  }
+
+  // Filter button categories
+  getCategories() {
+    const categories = new Set();
+    this.projects.forEach(project => {
+      project.category.forEach(cat => categories.add(cat));
+    });
+    return Array.from(categories);
+  }
+}
+
+//Instantiate the projectmanager
+const projectManager = new ProjectManager();
+
+// Wait for the DOM to be fully loaded before executing the script
+document.addEventListener('DOMContentLoaded', async function () {
+  // Load projects data
+  await projectManager.loadProjects();
+  
+
+  const projectsGrid = document.querySelector('.projects-grid');
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  if (filterBtns.length > 0 && projectCards.length > 0) {
+  
+  if (projectsGrid && filterBtns.length > 0) {
+    // Render all projects
+    projectManager.renderProjects(projectsGrid);
+    
+    // filter buttons functionality
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-     
+        // Current button recently pressed
         filterBtns.forEach(b => b.classList.remove('active'));
-        
         btn.classList.add('active');
 
         const filter = btn.getAttribute('data-filter');
+        projectManager.currentFilter = filter;
 
-        projectCards.forEach(card => {
-          if (filter === 'all') {
-            card.style.display = 'block';
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, 100);
-          } else {
-            const categories = card.getAttribute('data-category').split(' ');
-            if (categories.includes(filter)) {
-              card.style.display = 'block';
-              setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-              }, 100);
-            } else {
-              card.style.opacity = '0';
-              card.style.transform = 'translateY(20px)';
-              setTimeout(() => {
-                card.style.display = 'none';
-              }, 300);
-            }
-          }
-        });
+        // Filter and show projects
+        const filteredProjects = projectManager.filterProjects(filter);
+        projectManager.renderProjects(projectsGrid, filteredProjects);
       });
     });
+  }
+  
 
-
-    projectCards.forEach(card => {
-      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    });
+  const homeProjectsGrid = document.querySelector('.projects .projects-grid');
+  if (homeProjectsGrid && !projectsGrid) { 
+    const featuredProjects = projectManager.getFeaturedProjects();
+    projectManager.renderProjects(homeProjectsGrid, featuredProjects);
   }
 });
+
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { ProjectManager };
+}

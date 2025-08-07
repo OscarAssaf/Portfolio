@@ -1,0 +1,106 @@
+{
+  "projects": [
+    {
+      "id": "todo-list-app",
+      "title": "ToDo List App",
+      "description": "A comprehensive task management application built with SwiftUI featuring category organization, priority levels, and intuitive user interface design.",
+      "longDescription": "This SwiftUI-based task management app provides users with a clean, intuitive interface for organizing their daily tasks. Features include drag-and-drop reordering, category-based filtering (Work, Personal, School), priority levels with color coding, and persistent data storage using Core Data. The app also includes dark mode support and smooth animations for a polished user experience.",
+      "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&h=300&fit=crop&crop=center",
+      "technologies": ["Swift", "SwiftUI", "Core Data", "iOS"],
+      "category": ["mobile"],
+      "status": "completed",
+      "links": {
+        "demo": "#",
+        "github": "#",
+        "live": null
+      },
+      "featured": true,
+      "date": "2024-03-15"
+    },
+    {
+      "id": "notes-app",
+      "title": "Notes App",
+      "description": "Modern notes application with full CRUD operations, input validation, and responsive design using Jetpack Compose for Android development.",
+      "longDescription": "A feature-rich notes application built with Jetpack Compose that demonstrates modern Android development practices. Includes full CRUD operations, real-time input validation, search functionality, and a responsive design that adapts to different screen sizes. The app uses Room database for local storage and follows Material Design 3 guidelines.",
+      "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=300&fit=crop&crop=center",
+      "technologies": ["Kotlin", "Jetpack Compose", "Room DB", "Android"],
+      "category": ["mobile"],
+      "status": "completed",
+      "links": {
+        "demo": "#",
+        "github": "#",
+        "live": null
+      },
+      "featured": true,
+      "date": "2024-02-20"
+    },
+    {
+      "id": "weather-forecast",
+      "title": "Weather Forecast Dashboard",
+      "description": "Interactive weather dashboard with location-based forecasts, detailed analytics, and responsive design. Features include hourly/daily forecasts and weather maps.",
+      "longDescription": "A comprehensive weather application built with SwiftUI that provides detailed weather information using the Open-Meteo API. Features include current weather conditions, 7-day forecasts, hourly predictions, interactive weather maps, and location-based services. The app includes beautiful weather animations and supports both metric and imperial units.",
+      "image": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop&crop=center",
+      "technologies": ["Swift", "SwiftUI", "Open-Meteo API", "iOS"],
+      "category": ["mobile", "web"],
+      "status": "completed",
+      "links": {
+        "demo": null,
+        "github": "#",
+        "live": null
+      },
+      "featured": false,
+      "date": "2024-01-10"
+    },
+    {
+      "id": "ai-research-evaluator",
+      "title": "AI Research Evaluator",
+      "description": "Advanced AI system for evaluating research papers and methodologies. Built during internship at BoB (JTH) using Node.js and Express with AI integration.",
+      "longDescription": "An intelligent research evaluation system developed during my internship at BoB (JTH). The system uses AI models to analyze research papers, evaluate methodologies, and provide comprehensive summaries. Built with Node.js and Express, it integrates with OpenAI's API to process academic documents and generate detailed evaluations of research quality and methodology.",
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop&crop=center",
+      "technologies": ["Node.js", "Express", "AI/ML", "OpenAI API"],
+      "category": ["backend", "ai"],
+      "status": "completed",
+      "links": {
+        "demo": null,
+        "github": "#",
+        "live": null
+      },
+      "featured": true,
+      "date": "2025-06-01"
+    },
+    {
+      "id": "portfolio-website",
+      "title": "Portfolio Website",
+      "description": "Modern, responsive portfolio website showcasing my projects and skills. Built with vanilla HTML, CSS, and JavaScript with smooth animations and interactive elements.",
+      "longDescription": "This portfolio website demonstrates modern web development techniques using vanilla technologies. Features include smooth scrolling animations, particle effects, responsive design, and an interactive project filtering system. The site showcases clean code architecture and modern CSS techniques including CSS Grid, Flexbox, and custom animations.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop&crop=center",
+      "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive"],
+      "category": ["web"],
+      "status": "in-progress",
+      "links": {
+        "demo": "#",
+        "github": "#",
+        "live": "#"
+      },
+      "featured": false,
+      "date": "2025-01-01"
+    },
+    {
+      "id": "expense-tracker",
+      "title": "Expense Tracker",
+      "description": "Personal finance management app with category-based expense tracking, budget planning, and detailed analytics with charts and reports.",
+      "longDescription": "A comprehensive personal finance application that helps users track their expenses, set budgets, and analyze spending patterns. Features include category-based expense organization, monthly budget planning, detailed charts and reports, expense photo attachments, and export functionality. Built with React Native for cross-platform compatibility.",
+      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=300&fit=crop&crop=center",
+      "technologies": ["React Native", "SQLite", "Chart.js", "Expo"],
+      "category": ["mobile"],
+      "status": "in-progress",
+      "links": {
+        "demo": null,
+        "github": "#",
+        "live": null
+      },
+      "featured": false,
+      "date": "2024-12-01"
+    }
+  ]
+}
