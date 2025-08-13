@@ -104,7 +104,7 @@ class ProjectManager {
     if (category === 'all') {
       return this.projects;
     }
-    return this.projects.filter(project => 
+    return this.projects.filter(project =>
       project.category.includes(category)
     );
   }
@@ -112,7 +112,7 @@ class ProjectManager {
   createProjectCard(project) {
     const statusClass = `status-${project.status.replace(' ', '')}`;
     const categoryString = project.category.join(' ');
-    
+
     // links
     let linksHtml = '<div class="project-links">';
     if (project.links.live) {
@@ -125,9 +125,9 @@ class ProjectManager {
       linksHtml += `<a href="${project.links.github}" class="project-link">💻 GitHub</a>`;
     }
     linksHtml += '</div>';
-  
+
     //Tech tags
-    const techTags = project.technologies.map(tech => 
+    const techTags = project.technologies.map(tech =>
       `<span class="tech-tag">${tech}</span>`
     ).join('');
 
@@ -152,16 +152,16 @@ class ProjectManager {
     const projectsHtml = projectsToRender
       .map(project => this.createProjectCard(project))
       .join('');
-    
+
     container.innerHTML = projectsHtml;
-    
+
     // fade in
     const newCards = container.querySelectorAll('.project-card');
     newCards.forEach(card => {
       card.style.opacity = '0';
       card.style.transform = 'translateY(20px)';
       card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-      
+
       setTimeout(() => {
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
@@ -194,41 +194,60 @@ const projectManager = new ProjectManager();
 document.addEventListener('DOMContentLoaded', async function () {
   // Load projects data
   await projectManager.loadProjects();
-  
 
   const projectsGrid = document.querySelector('.projects-grid');
   const filterBtns = document.querySelectorAll('.filter-btn');
-  
-  if (projectsGrid && filterBtns.length > 0) {
-    // Render all projects
+  const mobileFilter = document.querySelector('#mobileFilter');
+
+  if (projectsGrid && (filterBtns.length > 0 || mobileFilter)) {
+    // render all projects initially
     projectManager.renderProjects(projectsGrid);
-    
+
     // filter buttons functionality
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Current button recently pressed
+        // update button states
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         const filter = btn.getAttribute('data-filter');
         projectManager.currentFilter = filter;
 
+        // update mobile dropdown to match
+        if (mobileFilter) {
+          mobileFilter.value = filter;
+        }
+
         // Filter and show projects
         const filteredProjects = projectManager.filterProjects(filter);
         projectManager.renderProjects(projectsGrid, filteredProjects);
       });
     });
+
+    // dropdown functionality
+    if (mobileFilter) {
+      mobileFilter.addEventListener('change', (e) => {
+        const filter = e.target.value;
+        projectManager.currentFilter = filter;
+
+        // update button 
+        filterBtns.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.getAttribute('data-filter') === filter) {
+            btn.classList.add('active');
+          }
+        });
+
+        // filter and show projects
+        const filteredProjects = projectManager.filterProjects(filter);
+        projectManager.renderProjects(projectsGrid, filteredProjects);
+      });
+    }
   }
-  
 
   const homeProjectsGrid = document.querySelector('.projects .projects-grid');
-  if (homeProjectsGrid && !projectsGrid) { 
+  if (homeProjectsGrid && !projectsGrid) {
     const featuredProjects = projectManager.getFeaturedProjects();
     projectManager.renderProjects(homeProjectsGrid, featuredProjects);
   }
 });
-
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ProjectManager };
-}

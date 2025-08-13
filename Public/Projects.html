@@ -25,7 +25,19 @@
                 <h1 class="projects-title">my_projects ( ) {</h1>
                 <p class="projects-subtitle">All the projects I've completed through my development journey</p>
 
+
+
                 <div class="filter-container">
+                    <!-- dropdown for mobile -->
+                    <select class="filter-dropdown" id="mobileFilter">
+                        <option value="all">All Projects</option>
+                        <option value="web">Web Development</option>
+                        <option value="mobile">Mobile Apps</option>
+                        <option value="backend">Backend</option>
+                        <option value="ai">AI</option>
+                    </select>
+
+                    <!-- buttons for desktop -->
                     <button class="filter-btn active" data-filter="all">All Projects</button>
                     <button class="filter-btn" data-filter="web">Web Development</button>
                     <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
