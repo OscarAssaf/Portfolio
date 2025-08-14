@@ -74,6 +74,10 @@ body {
     transition: color 0.3s ease;
 }
 
+.resume-link i {
+    font-size: 1rem;
+}
+
 .contact-item:hover {
     color: #64ffda;
 }
@@ -83,24 +87,21 @@ body {
 }
 
 .resume-link {
-    padding: 8px 16px;
-    background: transparent;
-    border: 1px solid #64ffda;
     color: #64ffda;
     text-decoration: none;
-    border-radius: 5px;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
+    position: relative;
 }
 
 .resume-link:hover {
-    background: rgba(100, 255, 218, 0.1);
+    color: #ff6b9d;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
 }
+
 
 .hero {
     min-height: 100vh;
@@ -436,6 +437,12 @@ body {
     font-size: 1.4rem;
     margin-bottom: 15px;
 }
+.end-bracket {
+    color: #64ffda;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    float:left;
+}
 
 .project-description {
     color: #8892b0;
@@ -581,7 +588,12 @@ body {
     box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
 }
 
-
+.tech-intro {
+    text-align: center;
+    color: #64ffda;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
 /*section */
 .section {
     padding: 100px 0;
@@ -681,7 +693,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-width: 100px;
-    color: #8892b0;
+    color: #64ffda;
     transition: all 0.3s ease;
     background: rgba(17, 34, 64, 0.6);
     border: 1px solid #233554;
@@ -691,7 +703,6 @@ body {
 }
 
 .tech-icon:hover {
-    color: #64ffda;
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
 }
@@ -700,7 +711,6 @@ body {
     width: 50px;
     height: 50px;
     margin-bottom: 12px;
-    filter: grayscale(1);
     transition: filter 0.3s ease;
 }
 
@@ -801,12 +811,16 @@ body {
     }
 
     .scroll-indicator {
-        position: relative;
-        margin-top: 40px;
-        bottom: auto;
-        left: auto;
-        transform: none;
-    }
+    position: relative;
+    margin-top: 40px;
+    bottom: auto;
+    left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1.5s forwards;
+}
 
     .tech-icon {
         min-width: 80px;
