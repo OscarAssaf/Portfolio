@@ -87,7 +87,7 @@ class ProjectManager {
 
   async loadProjects() {
     try {
-      const response = await fetch('./Data/projects.json');
+      const response = await fetch('./public/data/projects.json');
       if (!response.ok) {
         throw new Error('Failed to load projects');
       }
