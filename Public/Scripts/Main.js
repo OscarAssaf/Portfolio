@@ -140,6 +140,7 @@ class ProjectManager {
         <div class="project-content">
           <h3 class="project-title">${project.title}</h3>
           <p class="project-description">${project.description}</p>
+          <p class="project-long-description">${project.longDescription}</p>
           <div class="project-tech">${techTags}</div>
           ${linksHtml}
         </div>
