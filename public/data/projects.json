@@ -22,7 +22,7 @@
       }
     },
     {
-  "title": "CakesForYou 🍰",
+  "title": "CakesForYou",
   "description": "Full-stack web application for managing and showcasing a local cake shop business with customer management and product catalog CRUD operations.",
   "longDescription": "Also features order history tracking with SQL joins, secure admin authentication using bcrypt password hashing and session-based verifications with SQLite storage",
 "image": "/public/assets/cakesForYou.png",
