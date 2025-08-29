@@ -1,11 +1,10 @@
 {
   "projects": [
-
-{
+    {
       "title": "Portfolio Website",
       "description": "Responsive portfolio website showcasing my projects and skills. Built with vanilla HTML, CSS, and JavaScript with smooth animations and interactive elements.",
       "longDescription": "",
-      "image": "/public/assets/portfolio.png",
+      "image": "public/assets/portfolio.png",
       "technologies": [
         "HTML5",
         "CSS3",
@@ -17,41 +16,38 @@
       ],
       "status": "in progress",
       "links": {
-        "live": "oscarassaf.github.io/portfolio/",
-        "github":"https://github.com/OscarAssaf/portfolio"
+        "live": "https://oscarassaf.github.io/portfolio/",
+        "github": "https://github.com/OscarAssaf/portfolio"
       }
     },
     {
-  "title": "CakesForYou",
-  "description": "Full-stack web application for managing and showcasing a local cake shop business with customer management and product catalog CRUD operations.",
-  "longDescription": "Also features order history tracking with SQL joins, secure admin authentication using bcrypt password hashing and session-based verifications with SQLite storage",
-"image": "/public/assets/cakesForYou.png",
-
-  "technologies": [
-    "Node.js",
-    "Express.js",
-    "SQLite3",
-    "Handlebars",
-    "bcrypt Authentication",
-    "Session Management"
-  ],
-  "category": [
-    "web",
-    "fullstack"
-  ],
-  "status": "completed",
-  "links": {
-    "demo": "#",
-    "github": "https://github.com/OscarAssaf/CakesForYou",
-    "live": "#"
-  }
-},
-    
+      "title": "CakesForYou",
+      "description": "Full-stack web application for managing and showcasing a local cake shop business with customer management and product catalog CRUD operations.",
+      "longDescription": "Also features order history tracking with SQL joins, secure admin authentication using bcrypt password hashing and session-based verifications with SQLite storage",
+      "image": "public/assets/cakesForYou.png",
+      "technologies": [
+        "Node.js",
+        "Express.js",
+        "SQLite3",
+        "Handlebars",
+        "bcrypt Authentication",
+        "Session Management"
+      ],
+      "category": [
+        "web"
+      ],
+      "status": "completed",
+      "links": {
+        "demo": "#",
+        "github": "https://github.com/OscarAssaf/CakesForYou",
+        "live": "#"
+      }
+    },
     {
       "title": "Weather App",
       "description": "iOS weather app built with SwiftUI, provides real-time current condition and a 7-day forecast based on the user's location. It utilizes CoreLocation framework to detect the user's position and display local weather data with weather icons for an enchaned visual experience.",
       "longDescription": " Integrates Open-Meteo API for accurate weather data, with JSON decoding for API response parsing. It follows MVVM architecture pattern for clean code separation and maintainability.    ",
-      "image": "/public/assets/weatherApp.png",
+      "image": "public/assets/weatherApp.png",
       "technologies": [
         "Swift",
         "SwiftUI",
@@ -96,7 +92,7 @@
       "title": "ToDo List App",
       "description": "todo list app with category-based organization and filtering system built in SwiftUI. Features todo creation and completion tracking, category assignment (Work, Personal, School), dynamic filtering by category, and swipe-to-delete functionality with persistent state management..",
       "longDescription": "",
-      "image": "/public/assets/todo_List.png",
+      "image": "public/assets/todo_List.png",
       "technologies": [
         "Swift",
         "SwiftUI",
@@ -117,7 +113,7 @@
       "title": "Notes App",
       "description": "Complete task management app with CRUD operations, form validation, and navigation built using Jetpack Compose.",
       "longDescription": "Implements Material Design 3 components with dynamic theming, comprehensive input validation (title length, content limits), and responsive UI that adapts to different screen sizes and content lengths.",
-      "image": "/public/assets/noteapp.png",
+      "image": "public/assets/noteapp.png",
       "technologies": [
         "Kotlin",
         "Jetpack Compose",

@@ -17,6 +17,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
+
 /* nav bar */
 .nav {
     position: fixed;
@@ -384,7 +385,8 @@ body {
 
 .project-image {
     width: 100%;
-    aspect-ratio: 16/9; /* This creates a 16:9 ratio */
+    aspect-ratio: 16/9;
+    /* This creates a 16:9 ratio */
     background: linear-gradient(45deg, #233554, #1a1a2e);
     display: flex;
     align-items: center;
@@ -404,7 +406,7 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-     object-position: center;
+    object-position: center;
 }
 
 .project-card:hover .project-image img {
@@ -436,11 +438,12 @@ body {
     font-size: 1.4rem;
     margin-bottom: 15px;
 }
+
 .end-bracket {
     color: #64ffda;
     font-size: 1.4rem;
     margin-bottom: 15px;
-    float:left;
+    float: left;
 }
 
 .project-description {
@@ -574,6 +577,7 @@ body {
     transition: all 0.3s ease;
     background: transparent;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -584,12 +588,14 @@ html {
     box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
 }
 
-.tech-intro, .projects-intro {
+.tech-intro,
+.projects-intro {
     text-align: center;
     color: #64ffda;
     font-size: 1.2rem;
     margin-bottom: 40px;
 }
+
 /*section */
 .section {
     padding: 100px 0;
@@ -807,16 +813,16 @@ html {
     }
 
     .scroll-indicator {
-    position: relative;
-    margin-top: 40px;
-    bottom: auto;
-    left: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 1.5s forwards;
-}
+        position: relative;
+        margin-top: 40px;
+        bottom: auto;
+        left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 1.5s forwards;
+    }
 
     .tech-icon {
         min-width: 80px;
@@ -851,4 +857,3 @@ html {
         animation: none;
     }
 }
-

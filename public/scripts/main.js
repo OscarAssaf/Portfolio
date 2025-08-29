@@ -114,18 +114,17 @@ class ProjectManager {
     const categoryString = project.category.join(' ');
 
     // links
-    let linksHtml = '<div class="project-links">';
-    if (project.links.live) {
-      linksHtml += `<a href="${project.links.live}" class="project-link">🔗 Live Site</a>`;
-    }
-    if (project.links.demo) {
-      linksHtml += `<a href="${project.links.demo}" class="project-link">🔗 Demo</a>`;
-    }
-    if (project.links.github) {
-      linksHtml += `<a href="${project.links.github}" class="project-link">💻 GitHub</a>`;
-    }
-    linksHtml += '</div>';
-
+  let linksHtml = '<div class="project-links">';
+  if (project.links.live) {
+    linksHtml += `<a href="${project.links.live}" class="project-link" target="_blank" rel="noopener noreferrer">🔗 Live Site</a>`;
+  }
+  if (project.links.demo) {
+    linksHtml += `<a href="${project.links.demo}" class="project-link" target="_blank" rel="noopener noreferrer">🔗 Demo</a>`;
+  }
+  if (project.links.github) {
+    linksHtml += `<a href="${project.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">💻 GitHub</a>`;
+  }
+  linksHtml += '</div>';
     //Tech tags
     const techTags = project.technologies.map(tech =>
       `<span class="tech-tag">${tech}</span>`
